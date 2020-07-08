@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "server": "nodemon index.js",
+    "camagru": "cd ../front && npm start",
+    "start": "concurrently \"npm run server\" \"npm run camagru\" "
   },
   "author": "vsmolii, vlahorba",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
