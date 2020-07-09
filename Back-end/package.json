@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
-    "camagru": "cd ../front && npm start",
-    "start": "concurrently \"npm run server\" \"npm run camagru\" "
+      "server": "nodemon index.js",
+      "camagru": "cd ../front && npm start",
+      "start": "concurrently \"npm run server\" \"npm run camagru\" "
+
   },
   "author": "vsmolii, vlahorba",
   "license": "MIT",
