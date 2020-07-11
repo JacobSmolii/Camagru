@@ -32,21 +32,8 @@ server.get('/', (req, res) => { // see all the pictures
         })
 });
 
-// server.get('/', authenticate, (req, res) => { // see all the pictures
-//     // console.log(req.cookies.token)
-
-//     db.getAllPictures()
-//         .then(respond => {
-//             res.status(200).json({respond});
-//         })
-//         .catch(err => {
-//             res.status(500).json({ err: "erro is here"});
-//         })
-// });
-
 server.use('/', authRouter);
 
-server.use('/posts', authenticate, post);
-
+server.use('/post', authenticate, post);
 
 module.exports = server;

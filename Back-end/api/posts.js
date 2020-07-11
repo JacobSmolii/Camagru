@@ -29,10 +29,26 @@ router.get('/', (req, res) => {
         })
 })
 
+// fetch post by postId
+router.get('/:id', (req, res) => {
+    const {id} = req.params;
+
+    // console.log(id)
+    db.findPictureById(id)
+        .then(picture => {
+            // console.log(picture);
+            res.status(200).json(picture)
+        })
+        .catch(err => {
+            res.status(500).json({ error: "cannot fetch the picture by pictureId" })
+        })
+})
+
 // delete post ( user's post only)
 router.delete('/:id', (req, res) => {
     try {
         const {id} = req.params;
+
         db.deletePicture(id)
             .then(() => {
                 res.status(200).json({ message: "The post has been deleted successfully" })
@@ -58,6 +74,7 @@ router.post('/:id/comment', (req, res) => {
 
 })
 
+// fetch all comments by postId
 router.get('/:id/comment', (req, res) => {
     const picture_id = req.params.id;
 
@@ -81,7 +98,5 @@ router.delete('/:id/comment/:comment_id', (req, res) => {
         })
         .catch(() => res.status(204).json({ error: "Sorry, looks like the picture doesn't exist anymore" }))
 })
-
-router.post('')
 
 module.exports = router;
